@@ -20,7 +20,7 @@ import org.jsoup.select.Elements;
 import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
-        // null olması halinde
+        // null olması halinde default lokasyon bilgileri getirilecektir.
 
     SharedPreferences sharedPreferences;
     String cityIndex, cityToken;
