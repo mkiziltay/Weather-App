@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     public static String cityThirdToken ;
 
     AlertDialog.Builder dialogBuilder;
-    AlertDialog dialog;
+    AlertDialog dialog,mdialog;
     TextView cityOne,cityTwo,cityThree;
     ListView oListV;
     ListView oListV2;
