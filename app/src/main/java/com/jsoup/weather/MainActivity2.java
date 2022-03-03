@@ -47,14 +47,12 @@ public class MainActivity2 extends AppCompatActivity {
                 String url;
                 if(web!=null){
                     webUrl = web.getUrl();
-                    Log.i("geturl",webUrl);
                     String array[] = webUrl.split("/");
 
                     for (int i=0;i<array.length;i++){
-                        Log.i("geturl","Item : "+array[i]);
+
                         if (array[i].equals("l")){
                             url=array[i+1];
-                            //Log.i("geturl","TOKEN : "+url);
                             cityToken = url;
                         }
                     }

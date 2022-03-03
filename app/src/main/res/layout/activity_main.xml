@@ -29,6 +29,7 @@
                         android:textStyle="bold" />
 
                     <Button
+                        android:id="@+id/hourlyone"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:layout_gravity="center"
@@ -67,6 +68,7 @@
                         android:textStyle="bold" />
 
                     <Button
+                        android:id="@+id/hourlytwo"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:layout_gravity="center"
@@ -105,6 +107,7 @@
                         android:textStyle="bold" />
 
                     <Button
+                        android:id="@+id/hourlythree"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:layout_gravity="center"

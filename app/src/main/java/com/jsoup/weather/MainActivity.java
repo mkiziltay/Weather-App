@@ -10,10 +10,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
@@ -32,8 +32,9 @@ public class MainActivity extends AppCompatActivity {
     public static String cityThirdToken ;
 
     AlertDialog.Builder dialogBuilder;
-    AlertDialog dialog,mdialog;
+    AlertDialog dialog;
     TextView cityOne,cityTwo,cityThree;
+    Button hourlyone,hourlytwo,hourlythree;
     ListView oListV;
     ListView oListV2;
     ListView oListV3;
@@ -76,9 +77,13 @@ public class MainActivity extends AppCompatActivity {
         oListV3=findViewById(R.id.listthre);
         cityOne = findViewById(R.id.textone);
         cityTwo = findViewById(R.id.texttwo);
+        hourlyone = findViewById(R.id.hourlyone);
+        hourlytwo = findViewById(R.id.hourlytwo);
+        hourlythree = findViewById(R.id.hourlythree);
         cityThree = findViewById(R.id.textthre);
         new getHtml().execute();
         changeCity();
+        loadHourlyforecast();
     }
 
 
@@ -257,6 +262,38 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void loadHourlyforecast() {
+        hourlyone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent cityIntent = new Intent(MainActivity.this,MainActivity2.class);
+                cityIntent.putExtra("token",cityOneToken);
+                cityIntent.putExtra("cityIndex","first");
+                startActivity(cityIntent);
+            }
+        });
+
+        hourlytwo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent cityIntent = new Intent(MainActivity.this,MainActivity2.class);
+                cityIntent.putExtra("token",citySecondToken);
+                cityIntent.putExtra("cityIndex","second");
+                startActivity(cityIntent);
+            }
+        });
+
+        hourlythree.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent cityIntent = new Intent(MainActivity.this,MainActivity2.class);
+                cityIntent.putExtra("token",cityThirdToken);
+                cityIntent.putExtra("cityIndex","third");
+                startActivity(cityIntent);
+            }
+        });
+    }
+
     public void loadData(){
         sharedPreferences =getSharedPreferences("cityTokens", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -264,7 +301,7 @@ public class MainActivity extends AppCompatActivity {
         editor.putString( "second", "f38419bdba5b880763808b472bd412cc03b64a36a7f21968ced9c4976789813c");
         editor.putString( "third", "f38419bdba5b880763808b472bd412cc03b64a36a7f21968ced9c4976789813c");
         editor.commit();
-        Log.i("geturl",sharedPreferences.getString("first","")+"////////");
+        //Log.i("geturl",sharedPreferences.getString("first","")+"////////");
 
     }
 
@@ -278,17 +315,17 @@ public class MainActivity extends AppCompatActivity {
             editor.putString(cityIndex,cityToken);
             editor.apply();
             editor.commit();
-            Log.i("geturl","THE fst CITY HAS BEEN CHANGED");
+            //Log.i("geturl","THE fst CITY HAS BEEN CHANGED");
         }else if(cityIndex.equals("second")){
             editor.putString(cityIndex,cityToken);
             editor.apply();
             editor.commit();
-            Log.i("geturl","THE scd CITY HAS BEEN CHANGED");
+            //Log.i("geturl","THE scd CITY HAS BEEN CHANGED");
         }else if (cityIndex.equals("third")){
             editor.putString(cityIndex,cityToken);
             editor.apply();
             editor.commit();
-            Log.i("geturl","THE trd CITY HAS BEEN CHANGED");
+            //Log.i("geturl","THE trd CITY HAS BEEN CHANGED");
         }else{Log.i("geturl","THE CITY HAS NOT BEEN CHANGED");}
     }
 }
