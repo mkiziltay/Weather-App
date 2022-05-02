@@ -83,7 +83,7 @@ public class WeatherAdapter extends BaseAdapter {
             case "ÖÖ Yağmur Geçişleri":
                 iconView.setImageResource(R.drawable.raintransitionsm);
                 break;
-                case "ÖÖ Bulutlar / ÖS Güneş / Rüzgâr":
+            case "ÖÖ Bulutlar / ÖS Güneş / Rüzgâr":
                 iconView.setImageResource(R.drawable.lowrainwind);
                 break;
             case "Kara Dönen Yağmur":
@@ -174,6 +174,9 @@ public class WeatherAdapter extends BaseAdapter {
                 iconView.setImageResource(R.drawable.snowtransitions);
                 break;
             case "Bulutlu":
+                iconView.setImageResource(R.drawable.heavycloudy);
+                break;
+            default:
                 iconView.setImageResource(R.drawable.heavycloudy);
                 break;
         }

@@ -185,18 +185,22 @@ public class MainActivity extends AppCompatActivity {
 //body div div.DetailsSummary--temperature--1Syw3 --> sıcaklıklar
             try { //JSOUP FOR FIRST CITY
                 doc = Jsoup.connect(MainActivity.baseUrl+cityOneToken+"#detailIndex14").get();
-                Elements el2 = doc.select("body").select("div").first().getElementsByClass("DailyForecast--DisclosureList--msYIJ").select("details");
+                //Elements el2 = doc.select("body").select("div").first().getElementsByClass("DailyForecast--DisclosureList--msYIJ").select("details");
+                Elements el2 = doc.select("section").select("details");
                 //JSOUP FOR SECOND CITY
                 docfl = Jsoup.connect(MainActivity.baseUrl+citySecondToken).get();
-                Elements fl2 = docfl.select("body").select("div").first().getElementsByClass("DailyForecast--DisclosureList--msYIJ").select("details");
-                //JSOUP FOR THIRD CITY
+                //Elements fl2 = docfl.select("body").select("div").first().getElementsByClass("DailyForecast--DisclosureList--msYIJ").select("details");
+                Elements fl2 = docfl.select("section").select("details");
+                        //JSOUP FOR THIRD CITY
                 docgl = Jsoup.connect(MainActivity.baseUrl+cityThirdToken).get();
-                Elements gl2 = docgl.select("body").select("div").first().getElementsByClass("DailyForecast--DisclosureList--msYIJ").select("details");
+                //Elements gl2 = docgl.select("body").select("div").first().getElementsByClass("DailyForecast--DisclosureList--msYIJ").select("details");
+                Elements gl2 = docgl.select("section").select("details");
 
-                for (int i=0;i<el2.select("div").select("h2").size();i++) { //--------------- FIRST
+                for (int i=0;i<el2.size();i++) { //--------------- FIRST
                     //Log.i("gethtml", "//"+el2.select("div").attr("class","DetailsSummary--condition--24gQw").get(i).select("span").text());
-                    //Log.i("gethtml", "Day**"+el2.select("div").select("h2").get(i).text());
-                    listDay[i] =el2.select("div").select("h2").get(i).text();
+                    Log.i("gethtml", "Day**"+doc.select("section").select("details").get(i) .select("h3").first() .text());
+                    listDay[i] =el2.get(i) .select("h3").first() .text();
+                    //listDay[i] =el2.select("div").select("h2").get(i).text();
                     //Log.i("gethtml", "Degree**"+el2.attr("class","DetailsSummary--temperature--1Syw3").get(i).child(0).text().replace("g"," ") .split(" ")[2] );
                     listDegree[i] = el2.attr("class","DetailsSummary--temperature--1Syw3").get(i).child(0).text().replace("gü"," ").split(" ")[2];
                     //Log.i("gethtml", "Forecast**"+el2.attr("data-testid","PercentageValue").get(i).select("span").get(3).text());
@@ -206,15 +210,15 @@ public class MainActivity extends AppCompatActivity {
                 }
 
 
-                for (int i=0;i<fl2.select("div").select("h2").size();i++) { //--------------- SECOND
-                    listDayB[i] =fl2.select("div").select("h2").get(i).text();
+                for (int i=0;i<fl2.size();i++) { //--------------- SECOND
+                    listDayB[i] =fl2.get(i) .select("h3").first() .text();
                     listDegreeB[i] = fl2.attr("class","DetailsSummary--temperature--1Syw3").get(i).child(0).text().replace("gü"," ").split(" ")[2];
                     listForecastB[i] = fl2.attr("data-testid","PercentageValue").get(i).select("span").get(3).text();
                     listMoistureB[i] = fl2.attr("data-testid","PercentageValue").get(i).select("span").get(4).text();
                 }
 
-                for (int i=0;i<gl2.select("div").select("h2").size();i++) { //--------------- THIRD
-                    listDayC[i] =gl2.select("div").select("h2").get(i).text();
+                for (int i=0;i<gl2.size();i++) { //--------------- THIRD
+                    listDayC[i] =gl2.get(i) .select("h3").first() .text();
                     listDegreeC[i] = gl2.attr("class","DetailsSummary--temperature--1Syw3").get(i).child(0).text().replace("gü"," ") .split(" ")[2];
                     listForecastC[i] = gl2.attr("data-testid","PercentageValue").get(i).select("span").get(3).text();
                     listMoistureC[i] = gl2.attr("data-testid","PercentageValue").get(i).select("span").get(4).text();
