@@ -181,7 +181,10 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected Void doInBackground(Void... voids) {
-//div.DailyForecast--DisclosureList--msYIJ details div h2 --> günler
+//div.DailyForecast--DisclosureList--msYIJ details div h3 --> günler
+//section[header] h3[data-testid] --> günler
+//section:contains(ai) details div h3.DetailsSummary--daypartName--2FBp2 --> günler
+//section details div[data-testid="DetailsSummary"] --> gün gün hava durumu
 //body div div.DetailsSummary--temperature--1Syw3 --> sıcaklıklar
             try { //JSOUP FOR FIRST CITY
                 doc = Jsoup.connect(MainActivity.baseUrl+cityOneToken+"#detailIndex14").get();
